@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="TestSuite" verbose="1">
+    <test name="def">
+        <classes>
+<!--            <class name="TestDataProvider2DArray"></class>-->
+            <class name="TestDataProviderGeneric"></class>
+        </classes>
+
+    </test>
+
+</suite>
