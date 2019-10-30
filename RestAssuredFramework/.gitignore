@@ -2,3 +2,5 @@
 /.idea/
 /build/
 /gradle/
+/test-output/
+/src/log.txt

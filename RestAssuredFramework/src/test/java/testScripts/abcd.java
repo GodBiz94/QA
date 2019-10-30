@@ -1,3 +1,5 @@
+package testScripts;
+
 import helpers.JsonCreator;
 import org.json.JSONObject;
 
@@ -119,7 +121,7 @@ public class abcd {
         }*/
 
 
-/*         abcd gs=new abcd();
+/*         testScripts.abcd gs=new testScripts.abcd();
          gs.push("Hello");
         System.out.println(gs.pop());*/
 

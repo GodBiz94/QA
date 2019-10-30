@@ -1,8 +1,11 @@
+package dataprovider;
+
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.testng.annotations.*;
 import utils.ExcelReadWrite;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.*;
 
 
@@ -10,17 +13,19 @@ import java.util.*;
 public class GenericDataProvider {
 
 	@DataProvider(name="GenericDataProvider")
-	public static Iterator<Object[]> resourceDataProvider() throws IOException
+	public static Iterator<Object[]> resourceDataProvider(Method testMethod) throws Exception
 	{
-		List<Object[]> dataList = assetDataProvider("news");
+		Map<String,String> args=DataProviderUtils.resolveDataProviderMergeArguments(testMethod);
+		List<Object[]> dataList = assetDataProvider(args.get("file"),args.get("testName"));
 		return dataList.iterator();
 	}
 
 	
-	public static List<Object[]> assetDataProvider(String auditType) throws IOException
+	public static List<Object[]> assetDataProvider(String filePath,String auditType) throws IOException
 	{
-		ExcelReadWrite xl = new ExcelReadWrite("./src/test/resources/NewsAssessmentCreate.xls");
-		
+//		ExcelReadWrite xl = new ExcelReadWrite("./src/test/resources/NewsAssessmentCreate.xls");
+		ExcelReadWrite xl = new ExcelReadWrite(filePath);
+
 		HSSFSheet sheet = xl.setSheet("newsAssessment");
 		int rowCount = xl.rowCount(sheet);
 		int colCount = xl.colCount(sheet, 0);
